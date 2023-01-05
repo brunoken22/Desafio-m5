@@ -1,0 +1,1 @@
+{"mappings":"AAAA,EAEG,qBAAsB,CACtB,+BAAmC,CAFnC,QAIH,CACA,KACG,yDACH","sources":["src/index.css"],"sourcesContent":["*{\r\n   margin:0;\r\n   box-sizing: border-box;\r\n   font-family: 'Odibee Sans', cursive;\r\n   ;\r\n}\r\nbody{\r\n   background-image: url(./img/fondo.png);\r\n}"],"names":[],"version":3,"file":"index.183b412e.css.map"}
