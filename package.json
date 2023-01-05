@@ -1,0 +1,19 @@
+{
+  "name": "desafio-m5",
+  "version": "1.0.0",
+  "repository": "https://github.com/brunoken22/Desafio-m5",
+  "author": "brunoken22 <bruno_am_22@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-image": "2.0.0-rc.0",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "scripts": {
+    "dev": "parcel serve ./src/index.html",
+    "build": "parcel build ./src/index.html --dist-dir build",
+    "deploy": "gh-pages -d dist"
+  },
+  "compilerOptions": {
+    "typeRoots" : ["node_modules/@types", "src/types"]
+}
+}
