@@ -7,10 +7,12 @@ import { initPlay } from "./components/countdown";
 import { initJugada } from "./components/jugada";
 import { initScore } from "./components/score";
 
+state.init();
 initTitle();
 initBoton();
 initiHand();
 initPlay();
 initJugada();
 initScore();
-initRoute(document.querySelector("#root") as any);
+
+initRoute(document.querySelector("#root") as HTMLElement);

@@ -5,9 +5,18 @@ const state = {
          computerPlay: "",
          myPlay: " ",
       },
-      history: [{}],
+      history: {},
    },
-   init() {},
+   init() {
+      if (localStorage.getItem("history")) {
+         true;
+      } else {
+         localStorage.setItem(
+            "history",
+            JSON.stringify({ user: 0, computer: 0 })
+         );
+      }
+   },
 
    getState() {
       return this.data;
@@ -16,7 +25,7 @@ const state = {
    setMove(myPlay: jugada, computerPlay: jugada) {
       const currentState = this.getState();
 
-      return (currentState.currentGame.myPlay = {
+      return (currentState.currentGame = {
          computerPlay,
          myPlay,
       });
@@ -29,28 +38,40 @@ const state = {
       const gane = [ganeConPapel, ganeConTijera, ganeConPiedra].includes(true);
 
       const computerGaneConTijera =
-         myPlay == "tijera" && computerPlay == "papel";
+         computerPlay == "tijera" && myPlay == "papel";
       const computerGaneConPiedra =
-         myPlay == "piedra" && computerPlay == "tijera";
+         computerPlay == "piedra" && myPlay == "tijera";
       const computerGaneConPapel =
-         myPlay == "papel" && computerPlay == "piedra";
+         computerPlay == "papel" && myPlay == "piedra";
       const computerGane = [
          computerGaneConTijera,
          computerGaneConPiedra,
          computerGaneConPapel,
       ].includes(true);
-      if (gane) {
-         console.log("gane");
-         return gane;
-      } else if (computerGane) {
-         console.log(" ganp computerGane");
-         return computerGane;
-      }
 
-      this.data.currentGame = {
-         computerPlay: computerPlay,
-         myPlay: myPlay,
-      };
+      if (gane === computerGane) {
+         return "empate";
+      } else if (gane) {
+         return true;
+      } else if (computerGane) {
+         return false;
+      }
+   },
+   getHistory() {
+      const curerntHistory = JSON.parse(localStorage.getItem("history")!);
+      return curerntHistory;
+   },
+   saveHistory(myPlay: jugada, computerPlay: jugada) {
+      const currentHistory = this.getHistory();
+      if (this.whoWins(myPlay, computerPlay) == true) {
+         currentHistory.user = currentHistory.user + 1;
+      } else if (this.whoWins(myPlay, computerPlay) == false) {
+         currentHistory.computer = currentHistory.computer + 1;
+      }
+      localStorage.setItem("history", JSON.stringify(currentHistory)!);
+   },
+   clearHistory() {
+      localStorage.clear();
    },
 };
 

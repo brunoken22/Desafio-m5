@@ -1,3 +1,5 @@
+import { state } from "../../state";
+
 export function initScore() {
    customElements.define(
       "custom-score",
@@ -10,11 +12,15 @@ export function initScore() {
             const shadow = this.attachShadow({ mode: "open" });
             const div = document.createElement("div");
             div.classList.add("score");
+
+            const userScore = state.getHistory().user;
+            const computerScore = state.getHistory().computer;
+
             div.innerHTML = `
                <h3>Score</h3>
                <div class="puntos">
-                  <h4>Vos : 3</h4>
-                  <h4>Máquina : 3</h4>
+                  <h4>Vos : ${userScore}</h4>
+                  <h4>Máquina : ${computerScore}</h4>
                </div>
             `;
 

@@ -13,13 +13,20 @@ export function initJugada() {
             const div = document.createElement("div");
             const jugada = this.getAttribute("jugada");
             div.classList.add("imagen");
+            function eleccion() {
+               if (jugada === "empate") {
+                  return "Empate";
+               } else if (jugada === "true") {
+                  return "Ganastes";
+               } else {
+                  return "Perdistes";
+               }
+            }
             div.innerHTML = `
-               <h2 class="titulo">${
-                  jugada == "ganastes" ? "Ganastes" : "Perdistes"
-               }</h2>
+               <h2 class="titulo titulo-${eleccion()}">${eleccion()}</h2>
                <img src="${
-                  jugada == "ganastes" ? ganastes : perdistes
-               }" class="${jugada == "ganastes" ? "ganastes" : "perdistes"}"/>
+                  jugada == "true" ? ganastes : perdistes
+               }" class="${eleccion()}"/>
             `;
 
             const style = document.createElement("style");
@@ -36,6 +43,13 @@ export function initJugada() {
                   display: flex;
                   align-items: center;
                   justify-content: center;
+               }
+               .titulo-Empate{
+                  color:#000;
+                  opacity:100%
+               }
+               .Empate{
+                  opacity:30%;
                }  
             `;
 

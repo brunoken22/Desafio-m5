@@ -108,10 +108,11 @@ export function initPlay(param) {
          for (let ele of computHands) {
             if (Number(ele.getAttribute("id")) === numAleatorio) {
                state.setMove(myPlay, ele.getAttribute("type"));
+
                ele.style.display = "block";
                setTimeout(() => {
                   param.goTo("/result");
-               }, 4000);
+               }, 2000);
                return ele;
             }
          }

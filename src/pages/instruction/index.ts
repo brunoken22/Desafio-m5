@@ -1,12 +1,13 @@
 const papel = require("../../img/papel.png");
 const tijera = require("../../img/tijera.png");
 const piedra = require("../../img/piedra.png");
-
+const fondo = require("../../img/fondo.png");
 export function initInstruction(param) {
    const div = document.createElement("div");
    const style = document.createElement("style");
    div.classList.add("contenedor");
-
+   document.body.style.backgroundImage = `url(${fondo})`;
+   document.body.style.backgroundColor = `inherit`;
    div.innerHTML = `
       <custom-title inicio="Presioná jugar
       y elegí: piedra, papel o tijera antes de que pasen los 5 segundos."></custom-title>
@@ -19,6 +20,7 @@ export function initInstruction(param) {
    `;
 
    style.innerHTML = `
+   
    .contenedor{
       display:flex;
       flex-direction:column;

@@ -3,26 +3,27 @@ import { state } from "../../state";
 export function initResult(param) {
    const div = document.createElement("div");
    div.classList.add("contenedor");
+   const currentState = state.getState();
+   const ganador = state.whoWins(
+      currentState.currentGame.myPlay,
+      currentState.currentGame.computerPlay
+   );
 
+   state.saveHistory(
+      currentState.currentGame.myPlay,
+      currentState.currentGame.computerPlay
+   );
    div.innerHTML = ` 
-      <custom-jugada jugada="${"perdistes"}" class="perdistes"></custom-jugada>
-      <custom-score></custom-score>
+      <custom-jugada jugada="${ganador}"></custom-jugada>
+      <custom-score ganador="${ganador}"></custom-score>
       <custom-boton class="btn" title="Volver a jugar"></custom-boton>
    `;
-   // const fondo = div.
    const style = document.createElement("style");
    style.innerHTML = `
    body{
       opacity:90%;
-      background-image:none;
-      
    }
-   .perdistes === true ? body:""{
-      background-color:#894949;
-   }
-   .ganastes{
-      background-color:#888949;
-   }
+
    .contenedor{
       display:flex;
       flex-direction:column;
@@ -40,10 +41,23 @@ export function initResult(param) {
          height: 97.5vh;
       }
    }
-
    `;
+
+   const fondo = div.querySelector("custom-jugada")!.getAttribute("jugada");
+   // console.log(fondo);
+
+   if (fondo === "empate") {
+      document.body.style.backgroundColor = "#4AC0FF";
+      document.body.style.backgroundImage = "none";
+   } else if (fondo === "true") {
+      document.body.style.backgroundColor = "#888949";
+      document.body.style.backgroundImage = "none";
+   } else if (fondo === "false") {
+      document.body.style.backgroundColor = "#894949";
+      document.body.style.backgroundImage = "none";
+   }
+
    div.appendChild(style);
-   console.log(state.getState());
 
    const btn = div.querySelector(".btn");
    btn?.addEventListener("click", () => {
