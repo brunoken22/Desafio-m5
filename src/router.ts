@@ -30,7 +30,7 @@ function isGithubPages() {
 export function initRoute(container: Element) {
    function goTo(path) {
       const completePath = isGithubPages() ? BASE_PATH + path : path;
-      history.pushState({}, "", path);
+      history.pushState({}, "", completePath);
       handleRoute(completePath);
    }
    function handleRoute(root) {
