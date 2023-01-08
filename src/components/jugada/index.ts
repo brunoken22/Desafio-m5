@@ -1,37 +1,36 @@
 const perdistes = require("../../img/perdiste.png");
 const ganastes = require("../../img/ganastes.png");
-export function initJugada() {
-   customElements.define(
-      "custom-jugada",
-      class extends HTMLElement {
-         constructor() {
-            super();
-            this.render();
-         }
-         render() {
-            const shadow = this.attachShadow({ mode: "open" });
-            const div = document.createElement("div");
-            const jugada = this.getAttribute("jugada");
-            div.classList.add("imagen");
-            function eleccion() {
-               if (jugada === "empate") {
-                  return "Empate";
-               } else if (jugada === "true") {
-                  return "Ganastes";
-               } else {
-                  return "Perdistes";
-               }
+customElements.define(
+   "custom-jugada",
+   class extends HTMLElement {
+      constructor() {
+         super();
+         this.render();
+      }
+      render() {
+         const shadow = this.attachShadow({ mode: "open" });
+         const div = document.createElement("div");
+         const jugada = this.getAttribute("jugada");
+         div.classList.add("imagen");
+         function eleccion() {
+            if (jugada === "empate") {
+               return "Empate";
+            } else if (jugada === "true") {
+               return "Ganastes";
+            } else {
+               return "Perdistes";
             }
-            div.innerHTML = `
+         }
+         div.innerHTML = `
                <h2 class="titulo titulo-${eleccion()}">${eleccion()}</h2>
                <img src="${
                   jugada == "true" ? ganastes : perdistes
                }" class="${eleccion()}"/>
             `;
 
-            const style = document.createElement("style");
+         const style = document.createElement("style");
 
-            style.innerHTML = `
+         style.innerHTML = `
                .titulo{
                   color: #fff;
                   font-size: 3.3rem;
@@ -53,9 +52,8 @@ export function initJugada() {
                }  
             `;
 
-            shadow.appendChild(style);
-            shadow.appendChild(div);
-         }
+         shadow.appendChild(style);
+         shadow.appendChild(div);
       }
-   );
-}
+   }
+);

@@ -1,22 +1,21 @@
 import { state } from "../../state";
 
-export function initScore() {
-   customElements.define(
-      "custom-score",
-      class extends HTMLElement {
-         constructor() {
-            super();
-            this.render();
-         }
-         render() {
-            const shadow = this.attachShadow({ mode: "open" });
-            const div = document.createElement("div");
-            div.classList.add("score");
+customElements.define(
+   "custom-score",
+   class extends HTMLElement {
+      constructor() {
+         super();
+         this.render();
+      }
+      render() {
+         const shadow = this.attachShadow({ mode: "open" });
+         const div = document.createElement("div");
+         div.classList.add("score");
 
-            const userScore = state.getHistory().user;
-            const computerScore = state.getHistory().computer;
+         const userScore = state.getHistory().user;
+         const computerScore = state.getHistory().computer;
 
-            div.innerHTML = `
+         div.innerHTML = `
                <h3>Score</h3>
                <div class="puntos">
                   <h4>Vos : ${userScore}</h4>
@@ -24,8 +23,8 @@ export function initScore() {
                </div>
             `;
 
-            const style = document.createElement("style");
-            style.innerHTML = `
+         const style = document.createElement("style");
+         style.innerHTML = `
                .score{
                   width:inherit;
                   margin:15px auto;
@@ -52,9 +51,8 @@ export function initScore() {
                }
             `;
 
-            shadow.appendChild(div);
-            shadow.appendChild(style);
-         }
+         shadow.appendChild(div);
+         shadow.appendChild(style);
       }
-   );
-}
+   }
+);

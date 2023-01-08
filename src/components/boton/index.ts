@@ -1,18 +1,17 @@
-export function initBoton() {
-   class Boton extends HTMLElement {
-      constructor() {
-         super();
-         this.render();
-      }
-      render() {
-         const shadow = this.attachShadow({ mode: "open" });
-         const div = document.createElement("div");
-         const title = this.getAttribute("title");
-         div.innerHTML = `
+class Boton extends HTMLElement {
+   constructor() {
+      super();
+      this.render();
+   }
+   render() {
+      const shadow = this.attachShadow({ mode: "open" });
+      const div = document.createElement("div");
+      const title = this.getAttribute("title");
+      div.innerHTML = `
             <button class="btn">${title}</button>
          `;
-         const style = document.createElement("style");
-         style.innerHTML = `
+      const style = document.createElement("style");
+      style.innerHTML = `
             .btn{
                font-family: 'Odibee Sans', cursive;
                font-size:3rem;
@@ -31,9 +30,8 @@ export function initBoton() {
                }
             }
          `;
-         shadow.appendChild(div);
-         shadow.appendChild(style);
-      }
+      shadow.appendChild(div);
+      shadow.appendChild(style);
    }
-   customElements.define("custom-boton", Boton);
 }
+customElements.define("custom-boton", Boton);
