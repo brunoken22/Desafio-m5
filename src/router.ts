@@ -21,14 +21,22 @@ const router = [
    },
 ];
 
+const BASE_PATH = "/Desafio-m5";
+
+function isGithubPages() {
+   return location.host.includes("brunoken22.github.io");
+}
+
 export function initRoute(container: Element) {
    function goTo(path) {
+      const completePath = isGithubPages() ? BASE_PATH + path : path;
       history.pushState({}, "", path);
-      handleRoute(path);
+      handleRoute(completePath);
    }
    function handleRoute(root) {
+      const newRoute = isGithubPages() ? root.replace(BASE_PATH, "") : root;
       for (let r of router) {
-         if (r.path.test(root)) {
+         if (r.path.test(newRoute)) {
             let el = r.component({ goTo })!;
             if (container.firstChild) {
                container.firstChild.remove();
@@ -37,7 +45,7 @@ export function initRoute(container: Element) {
          }
       }
    }
-   if (location.pathname == "/") {
+   if (location.pathname == "/" || location.pathname == "/Desafio-m5/") {
       goTo("/welcome");
    } else {
       handleRoute(location.pathname);
