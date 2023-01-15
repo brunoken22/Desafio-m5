@@ -90,6 +90,7 @@ export function initPlay(param) {
    const hands = div.querySelectorAll(".selec") as any;
    for (let el of hands) {
       el.addEventListener("click", (e) => {
+         clearInterval(conteo);
          e.preventDefault();
          el.href = " ";
          for (let selec of hands) {
