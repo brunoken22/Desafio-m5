@@ -9,9 +9,9 @@ export function initInstruction(param) {
    document.body.style.backgroundImage = `url(${fondo})`;
    document.body.style.backgroundColor = `inherit`;
    div.innerHTML = `
-      <custom-title inicio="Presioná jugar
-      y elegí: piedra, papel o tijera antes de que pasen los 5 segundos."></custom-title>
-      <custom-boton class="btn" title="Jugar"></custom-boton>
+   <custom-title inicio="Presioná jugar
+   y elegí: piedra, papel o tijera antes de que pasen los 5 segundos."></custom-title>
+   <custom-boton class="btn" title="Jugar"></custom-boton>
       <div class='hand'>
          <custom-hand direction="${papel}"></custom-hand>
          <custom-hand direction="${tijera}"></custom-hand>
@@ -34,7 +34,7 @@ export function initInstruction(param) {
          display:flex;
          flex-direction:column;
          width:300px;
-         margin:145px auto;
+         margin:60px auto;
          margin-bottom: 0;
          height: 82vh;
       }
@@ -43,7 +43,7 @@ export function initInstruction(param) {
    .hand{
       display:flex;
       justify-content: space-around;
-      margin-top:3rem;
+      margin-top:2.6rem;
    }
    @media(min-width:400px){
       .hand{

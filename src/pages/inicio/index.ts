@@ -30,7 +30,7 @@ export function initWelcome(param) {
             display:flex;
             flex-direction:column;
             width:300px;
-            margin:145px auto;
+            margin:0px auto;
             margin-bottom: 0;
             height: 82vh;
          }

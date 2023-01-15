@@ -16,9 +16,9 @@ export function initPlay(param) {
       </div>
       <custom-countdown class="countdown"></custom-countdown>
       <div class='hands'>
-         <a href="#" class="papel selec"><custom-hand id='papel' direction="${papel}"></custom-hand></a>
-         <a href="#" class="tijera selec"><custom-hand id='tijera' direction="${tijera}"></custom-hand></a>
-         <a href="#" class="piedra selec"><custom-hand id='piedra' direction="${piedra}"></custom-hand></a>
+         <a href="#" id="papel" class="papel selec"><custom-hand id='papel' direction="${papel}"></custom-hand></a>
+         <a href="#" id="tijera" class="tijera selec"><custom-hand id='tijera' direction="${tijera}"></custom-hand></a>
+         <a href="#" id="piedra" class="piedra selec"><custom-hand id='piedra' direction="${piedra}"></custom-hand></a>
       </div>
    `;
 
@@ -52,7 +52,7 @@ export function initPlay(param) {
    }
    @media(min-width:400px){
       .hands{
-         justify-content: space-between;
+         justify-content: space-center;
       }
       
    }
@@ -78,23 +78,30 @@ export function initPlay(param) {
    const conteo = setInterval(() => {
       const countdown = div
          .querySelector("custom-countdown")
-         ?.shadowRoot?.querySelector(".countdown-number")!
-         .querySelector("h3")?.textContent as any;
+         ?.shadowRoot?.querySelector(".countdown-number")?.textContent as any;
+
       if (countdown < 1) {
          clearInterval(conteo);
+
          param.goTo("./instruction");
       }
    }, 1000);
 
-   const hands = div.querySelectorAll(".selec");
+   const hands = div.querySelectorAll(".selec") as any;
    for (let el of hands) {
       el.addEventListener("click", (e) => {
          e.preventDefault();
-         clearInterval(conteo);
+         el.href = " ";
+         for (let selec of hands) {
+            if (selec.getAttribute("id") !== el.getAttribute("id")) {
+               selec.remove();
+            }
+         }
+
          const numAleatorio = Math.ceil(Math.random() * 3);
 
          (el as any).style.cssText =
-            "margin-top:-70px;opacity:100%;width:300px";
+            "margin-top:-70px;opacity:100%;justify-content: center;pointer-events: none;cursor: default";
 
          const countdown = div.querySelector("custom-countdown") as HTMLElement;
 
