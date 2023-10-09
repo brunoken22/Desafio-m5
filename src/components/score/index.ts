@@ -1,21 +1,21 @@
-import { state } from "../../state";
+import {state} from '../../state';
 
 customElements.define(
-   "custom-score",
-   class extends HTMLElement {
-      constructor() {
-         super();
-         this.render();
-      }
-      render() {
-         const shadow = this.attachShadow({ mode: "open" });
-         const div = document.createElement("div");
-         div.classList.add("score");
+  'custom-score',
+  class extends HTMLElement {
+    constructor() {
+      super();
+      this.render();
+    }
+    render() {
+      const shadow = this.attachShadow({mode: 'open'});
+      const div = document.createElement('div');
+      div.classList.add('score');
 
-         const userScore = state.getHistory().user;
-         const computerScore = state.getHistory().computer;
+      const userScore = state.getHistory().user;
+      const computerScore = state.getHistory().computer;
 
-         div.innerHTML = `
+      div.innerHTML = `
                <h3>Score</h3>
                <div class="puntos">
                   <h4>Vos : ${userScore}</h4>
@@ -23,10 +23,10 @@ customElements.define(
                </div>
             `;
 
-         const style = document.createElement("style");
-         style.innerHTML = `
+      const style = document.createElement('style');
+      style.innerHTML = `
                .score{
-                  width:inherit;
+                  width:70%;
                   margin:15px auto;
                   border:solid 10px;
                   border-radius:20px;
@@ -49,10 +49,16 @@ customElements.define(
                   margin-bottom:0;
                   margin-top:30px
                }
+               @media(min-width:400px){
+                  .score{
+                  width:80%;
+
+                  }
+               }
             `;
 
-         shadow.appendChild(div);
-         shadow.appendChild(style);
-      }
-   }
+      shadow.appendChild(div);
+      shadow.appendChild(style);
+    }
+  }
 );

@@ -20,6 +20,7 @@
     ]
   },
   "dependencies": {
-    "gh-pages": "^4.0.0"
+    "gh-pages": "^4.0.0",
+    "lmdb-store": "^1.6.14"
   }
 }

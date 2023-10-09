@@ -1,12 +1,12 @@
-const papel = require("../../img/papel.png");
-const tijera = require("../../img/tijera.png");
-const piedra = require("../../img/piedra.png");
+const papel = require('../../img/papel.png');
+const tijera = require('../../img/tijera.png');
+const piedra = require('../../img/piedra.png');
 
 export function initWelcome(param) {
-   const div = document.createElement("div");
-   const style = document.createElement("style");
-   div.classList.add("contenedor");
-   div.innerHTML = `
+  const div = document.createElement('div');
+  const style = document.createElement('style');
+  div.classList.add('contenedor');
+  div.innerHTML = `
       <custom-title inicio="${"Piedra<br> Papel <span class='span-o'>o</span> Tijera"}"></custom-title>
       <custom-boton class="btn" title="Empezar"></custom-boton>
       <div class='hand'>
@@ -16,7 +16,7 @@ export function initWelcome(param) {
       </div>
 
    `;
-   style.innerHTML = `
+  style.innerHTML = `
       .contenedor{
          display:flex;
          flex-direction:column;
@@ -32,7 +32,6 @@ export function initWelcome(param) {
             width:300px;
             margin:0px auto;
             margin-bottom: 0;
-            height: 82vh;
          }
       }
 
@@ -48,11 +47,11 @@ export function initWelcome(param) {
       }
    `;
 
-   div.appendChild(style);
+  div.appendChild(style);
 
-   const btn = div.querySelector(".btn");
-   btn?.addEventListener("click", (e) => {
-      param.goTo("/instruction");
-   });
-   return div;
+  const btn = div.querySelector('.btn');
+  btn?.addEventListener('click', (e) => {
+    param.goTo('/instruction');
+  });
+  return div;
 }
